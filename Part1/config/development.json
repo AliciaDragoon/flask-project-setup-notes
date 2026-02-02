@@ -1,0 +1,10 @@
+[
+  {
+    "name": "FLASK_DEBUG",
+    "value": "1"
+  },
+  {
+    "name": "FLASK_CONFIG",
+    "value": "development"
+  }
+]

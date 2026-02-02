@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql  # 符合 PG 18+ 的新规范
+  web:
+    build:
+      context: ${PWD}
+      dockerfile: docker/Dockerfile
+    environment:
+      FLASK_DEBUG: ${FLASK_DEBUG} 
+      FLASK_CONFIG: ${FLASK_CONFIG}
+      # 接收传递给 Postgres 容器的环境变量来连接数据库
+      APPLICATION_DB: ${APPLICATION_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_HOSTNAME: "db"  # 提供数据库的地址
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    command: flask run --host 0.0.0.0
+    volumes:
+      - ${PWD}:/opt/code
+    ports:
+      - "5000:5000"
+
+volumes:
+  pgdata:

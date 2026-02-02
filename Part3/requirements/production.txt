@@ -1,0 +1,6 @@
+# 生产环境的依赖文件，包含运行项目所需的最少依赖。需要尽可能简洁，从而显著加快生产环境的部署速度。
+Flask
+flask-sqlalchemy
+psycopg
+flask-migrate
+gunicorn

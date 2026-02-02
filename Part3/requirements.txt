@@ -1,0 +1,2 @@
+# 指向生产环境的依赖文件
+-r requirements/production.txt
