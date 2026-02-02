@@ -1,14 +1,23 @@
 《Flask project setup: TDD, Docker, Postgres and more》学习笔记
+
 博客地址：https://www.thedigitalcatonline.com/blog/2020/07/05/flask-project-setup-tdd-docker-postgres-and-more-part-1/
 
 项目搭建的主要需求：
+
 开发、测试、生产环境使用相同的数据库引擎（Postgres）；
+
 测试使用临时数据库（ephemeral database）；
+
 生产部署仅需修改静态配置，无需改动代码；
+
 能够初始化数据库、管理迁移；
+
 能从空数据库快速创建"场景"（scenarios）用于测试查询；
+
 本地环境能模拟生产环境。
+
 配置必须单一来源（Single Source of Truth），使用 JSON 格式（可被 Python、Terraform、AWS ECS 等多种工具读取）。
+
 作者特别提醒：不要被"想快速看到效果"的冲动驱使而忽略了基础架构。
 
 
